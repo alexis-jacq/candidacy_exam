@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Framework}{5}{0}{2}
+\beamer@sectionintoc {3}{Cognitive architecture}{11}{0}{3}
+\beamer@sectionintoc {4}{Implementation}{14}{0}{4}
+\beamer@sectionintoc {5}{Evaluation}{16}{0}{5}
+\beamer@sectionintoc {6}{Conclusion \& planning}{20}{0}{6}
