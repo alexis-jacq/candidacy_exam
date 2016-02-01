@@ -11,6 +11,10 @@
 \usepackage{multicol}
 \usepackage{color}
 
+%\usepackage[demo]{graphicx}
+%\usepackage{caption}
+%\usepackage{subcaption}
+
 \usepackage{tabularx,ragged2e}
 \usepackage{booktabs}
 
@@ -60,13 +64,6 @@ University of Lisbon}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
-\begin{frame}{Mutual modelling in HRI}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.7\columnwidth]{sally_ann}
-    \end{figure}
-\end{frame}
-
 \begin{frame}{The CoWriter activity}
 	\begin{figure}
         \centering
@@ -74,33 +71,80 @@ University of Lisbon}}
     \end{figure}
 \end{frame}
 
+\begin{frame}{Henry interacting with Nao}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{videos/test.png}
+    \video{0.5\textwidth}{videos/test.mp4}
+    \footnotemark{Jacq, A., Lemaignan, S., Garcia, F., Dillenbourg, P., Paiva, A.
+    \textit{Building Successful Long Child-Robot Interactions in a Learning Context}
+    HRI 2016}
+\end{frame}
+
+\begin{frame}{Limits}
+\textbf{We don't know if the child understand exactly what we want him to understand.}
+\begin{itemize}
+\item The robot needs to be able to show that he did not understood eventual miss-behaviours
+\item The learning speed of the robot may be too hight or too small
+\item The robot could have micro-behaviour based on the content of the interaction
+\item Sometimes we can lose the commitment of the child, that could be solve by a simple reaction of the robot
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limits}
+\begin{itemize}
+\item The robot must be aware of the mind of the child
+\item It must react to his image in the eyes of the child 
+\item It needs an ``artificial theory of mind"
+\end{itemize}
+\end{frame}
+
+\section{Mutual modelling in HRI}
+
+\begin{frame}{Level 1}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{naoMM}
+        \caption{The robot building a model of the child: a first level of mutual modelling.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Level 2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\columnwidth]{naoMM2}
+        \caption{The robot building a model of itself perceived by the child: a second level of mutual modelling.}
+    \end{figure}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Framework}
 
-\begin{frame}{Definitions}
-\begin{itemize}
-	\item 1st-order agents
-	\item 2nd-order agents
-	\item nth-order agents
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Definitions}
-\begin{itemize}
-	\item perceived variables
-	\item abstract variables
-	\item model of an agent
-\end{itemize}
-\end{frame}
-
 \begin{frame}{Notations}
-\begin{itemize}
-	\item $\textbf{M}_{\textbf{A}}$
-	\item $\textbf{M}_{\textbf{A,B}}$
-	\item $\textbf{M}_{\textbf{A,B,C,D}}$
-	\item $$\displaystyle \textbf{M}^t_{\textbf{A}}(X) = x^t$$
-\end{itemize}
+\begin{figure}[!tbp]
+	\begin{minipage}[b]{.4\textwidth}
+		\includegraphics[width=0.8\columnwidth]{naoMM}
+		\caption{\textcolor{blue}{$\textbf{M}_{\textbf{C}}$} (1st level)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.4\textwidth}
+		\includegraphics[width=0.8\columnwidth]{naoMM4}
+		\caption{\textcolor{blue}{$\textbf{M}_{\textbf{R}}$} (1st level)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.4\textwidth}
+		\includegraphics[width=0.8\columnwidth]{naoMM3}
+		\caption{\textcolor{blue}{$\textbf{M}_{\textbf{C,C}}$} (2nd level)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{.4\textwidth}
+		\includegraphics[width=0.8\columnwidth]{naoMM2}
+		\caption{\textcolor{blue}{$\textbf{M}_{\textbf{C,R}}$} (2nd level)}
+	\end{minipage}
+	
+\end{figure}
+
+% faire les 4 !!
+
 \end{frame}
 
 
@@ -110,8 +154,10 @@ $$ \mathbb{P}\left[\textit{abstract variables}\,\given[\Big]\,\textit{perveived 
 \end{frame}
 
 \begin{frame}{Expected causalities}
-$$ \mathbb{P}\left[\textbf{M}^t_{\textbf{C,R}}(X)\,\given[\Big]\,\textbf{M}^t_{\textbf{C,R}}(Y)>0\right]\sim 1$$
-$$\mathbb{P}\left[ \textbf{M}^{t_0}_{\textbf{C}}(X) \given[\Big] \textbf{M}^{t_0}_{\textbf{C}}(Y)=\textit{``robot's hand"} \bigcap\limits^{t_0+\theta}_{t_1>t_0} \textbf{M}^{t_1}_{\textbf{C}}(Y)\neq\textit{``target object"}\right]\sim 0$$
+$$M_{C}:$$
+$$ \mathbb{P}\left[ \textit{Understand pointing} \given[\Big] \textit{look at the hand but not at the target}\right]\sim 0$$\\
+$$ M_{C,R}:$$
+$$ \mathbb{P}\left[\textit{Understand robot's progress}\,\given[\Big]\,\textit{Positive feedback}\right]\sim 1$$
 \end{frame}
 
 
@@ -121,7 +167,7 @@ $$\mathbb{P}\left[ \textbf{M}^{t_0}_{\textbf{C}}(X) \given[\Big] \textbf{M}^{t_0
 \begin{frame}{Global description}
 	\begin{figure}
         \centering
-        \includegraphics[width=1\columnwidth]{cognitive_archi}
+        \includegraphics[width=1\columnwidth]{archi_already}
     \end{figure}
 \end{frame}
 
@@ -131,6 +177,26 @@ $$\mathbb{P}\left[ \textbf{M}^{t_0}_{\textbf{C}}(X) \given[\Big] \textbf{M}^{t_0
 \item \textcolor{blue}{Mixed-initiative}: The robot makes suggestions; a human agrees or disagrees
 \item \textcolor{blue}{Autonomous}: The robot makes decisions
 \end{enumerate}
+\end{frame}
+
+\begin{frame}{what is already here ?}
+	\begin{figure}
+        \centering
+        \includegraphics[width=0.8\columnwidth]{screenshot.jpg}
+        \caption{online \textit{with-me-ness}}
+        \footnotemark{Lemaignan, S. and Garcia, F. and Jacq, A. and Dillenbourg, P.
+    \textit{From Real-time Attention Assessment to “With-me-ness” in Human-Robot Interaction}
+    HRI 2016}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{what is already here ?}
+    \begin{figure}
+        \centering
+        % buttons
+        \includegraphics[width=0.9\columnwidth]{buttons.jpg}
+        \caption{Buttons for feedback}
+    \end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -183,10 +249,11 @@ $$\mathbb{P}\left[ \textbf{M}^{t_0}_{\textbf{C}}(X) \given[\Big] \textbf{M}^{t_0
 \end{frame}
 
 \begin{frame}{Step by step approach}
-\begin{itemize}
-\item New variable (or group of variables)
-\item New experiment to test the impact
-\end{itemize}
+\textbf{New variable (or group of variables) $\rightarrow$ New experiment to test the impact}
+	\begin{figure}
+        \centering
+        \includegraphics[width=1\columnwidth]{archi_newstep}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
